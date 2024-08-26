@@ -1,0 +1,69 @@
+POST http://localhost:3000/matches
+Content-Type: application/json
+
+# {
+#    "refereeId": "ref001",
+#    "matchOne": {
+#       "teamOne": {
+#          "playerOneId": "player001"
+#       },
+#       "teamTwo": {
+#          "playerOneId": "player003"
+#       }
+#    },
+#    "matchType": "single"
+# }
+{
+   "refereeId": "ref001",
+   "matchOne": {
+      "teamOne": {
+         "playerOneId": "66c6b91a5e3516ed46fe621b",
+         "playerTwoId": "66c6b96f5e3516ed46fe62e2"
+      },
+      "teamTwo": {
+         "playerOneId": "66c6ba545e3516ed46fe666c",
+         "playerTwoId": "66c6baa45e3516ed46fe68ea"
+      }
+   },
+   "matchType": "double",
+   "matchDate": "2024-08-21T17:33:00.000+00:00"
+}
+
+###
+GET http://localhost:3000/matches
+
+###
+GET http://localhost:3000/matches/66c73e13178b12fc2adb34b0
+
+###
+PATCH http://localhost:3000/matches/66c73e13178b12fc2adb34b0
+Content-Type: application/json
+
+{
+   "match": "matchOne",
+   "teamOne": {
+      "score": 0
+   },
+   "teamTwo": {
+      "score": 5
+   },
+   "status": "unfinished"
+}
+
+# #####
+# {
+#    "match": "matchOne",
+#    "teamOne": {
+#       "score": 0
+#    }
+# }
+
+
+# {
+#    "match": "matchOne",
+#    "status": "unfinished"
+# }
+
+
+
+

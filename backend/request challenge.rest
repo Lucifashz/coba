@@ -1,0 +1,63 @@
+###
+POST http://localhost:3000/challenge
+Content-Type: application/json
+
+{
+   "challenger": "66b07365c108484d53daacbc",
+   "challengerPartner": "",
+   "challenged": "66b06459542dd87d69e13737",
+   "challengedPartner": "",
+   "matchReferee": "66b196f9474311a4c546faec",
+   "matchType": "double",
+   "matchDate": "2024-08-20 12:04:00"
+}
+
+
+###
+GET http://localhost:3000/challenges
+
+# 66c48f6752d35a318807860e challenged
+# 66c48f6152d35a31880785de challenger
+###
+GET  http://localhost:3000/challenges-by-challenged-id/66c48f7152d35a3188078666
+
+###
+GET  http://localhost:3000/challenges-by-challenger-id/66b07365c108484d53daacbc
+
+
+###
+PATCH  http://localhost:3000/challenges-by-challenged-id/66c1c5e0198602886da62fe9
+Content-Type: application/json
+
+{
+   "notification-status": "unread"
+}
+
+###
+PATCH  http://localhost:3000/challenges-match-status/66c1c5e0198602886da62fe9
+Content-Type: application/json
+
+{
+   "notification-status": "unread",
+   "match-status": "rejected"
+}
+
+###
+PATCH  http://localhost:3000/challenges-by-challenger-id/66c1c5e0198602886da62fe9
+Content-Type: application/json
+
+{
+   "notification-status": "unread"
+}
+
+###
+POST http://localhost:3000/challenge-check-double
+Content-Type: application/json
+
+{
+   "challenger": "66c6bea66df9ce7109fa69cd",
+   "challenged": "66c6baa45e3516ed46fe68ea",
+   "matchType": "double"
+}
+
+

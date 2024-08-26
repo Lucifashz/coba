@@ -1,0 +1,44 @@
+###
+POST http://localhost:3000/partner
+Content-Type: application/json
+
+{
+   "sender": "66c48f6152d35a31880785de",
+   "receiver": "66c48f6752d35a318807860e"
+}
+
+###
+GET http://localhost:3000/partners
+
+
+###
+GET  http://localhost:3000/partners-by-receiver-id/66c48f6752d35a318807860e
+
+###
+GET  http://localhost:3000/partners-by-sender-id/66c48f6152d35a31880785de
+
+###
+PATCH  http://localhost:3000/partners-by-receiver-id/66c498901d7f86ec7e5fe757
+Content-Type: application/json
+
+{
+   "partner-status": "read"
+}
+
+###
+PATCH  http://localhost:3000/partners-by-sender-id/66c498901d7f86ec7e5fe757
+Content-Type: application/json
+
+{
+   "partner-status": "read"
+}
+
+###
+PATCH  http://localhost:3000/partners-partner-status/66c498901d7f86ec7e5fe757
+Content-Type: application/json
+
+{
+   "partner-status": "unread",
+   "partner-status": "rejected"
+}
+
