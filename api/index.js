@@ -2,10 +2,9 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 // import cookieParser from "cookie-parser";
+import PaypalRoute from "./routes/PaypalRoute.js";
 import "./utils/db.js";
 
-
-dotenv.config();
 
 const app = express();
 
@@ -17,9 +16,13 @@ app.use(express.json());
 
 
 // paypal payment api for client key; 
+app.use(PaypalRoute);
+
+// home page
 app.use("/", (req, res) => {
-  res.send(process.env.PAYPAL_CLIENT_ID);
+  res.send("Halaman home");
 });
+
 
 
 app.listen(process.env.PORT, () => console.log(`Example app listening on port ${process.env.PORT}!`));
