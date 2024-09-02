@@ -1,64 +1,26 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import mongoose from "mongoose";
-import Paypal from "./routes/Paypal.js"
+// import cookieParser from "cookie-parser";
+import "./utils/db.js";
+
 
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT;
-
-//connect db
-mongoose
-  .connect(process.env.MONGOOSEDB_RUL)
-  .then(() => console.log("db connected"))
-  .then((err) => {
-    err;
-  });
 
 
-
-app.use(express.json())
-
-app.use(cors())
-
-
+app.use(cors({credentials: true, origin: true}));
+// app.use(cookieParser());
+app.use(express.urlencoded({extended: true}));
+app.use(express.json());
 
 
-
-
-// paypal payment api for client key;
-app.use(Paypal);
-
-
-
-
-
-app.listen(PORT || 9000, () => {
-  console.log(`server listening on port ${PORT}`);
+// paypal payment api for client key; 
+app.use("/", (req, res) => {
+  res.send(process.env.PAYPAL_CLIENT_ID);
 });
 
 
+app.listen(process.env.PORT, () => console.log(`Example app listening on port ${process.env.PORT}!`));
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-//api product test route
-// app.get("/api/products", (req, res) => {
-//   res.json(products);
-// });
-// app.get("/api/products/:id", (req, res) => {
-//     const product = products.find((product)=>product.id === req.params.id)
-//     res.json(product);
-//   });
