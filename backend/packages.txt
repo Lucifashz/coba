@@ -1,0 +1,1 @@
+npm install bcrypt cookie-parser express-validator jsonwebtoken validator dotenv express mongoose nodemon 
